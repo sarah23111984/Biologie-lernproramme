@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Genetik-Quiz – Mendels Erbsen</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+
+    <!-- Kopfbereich -->
+    <header class="header">
+      <span class="logo" aria-hidden="true">🫛</span>
+      <div>
+        <h1>Genetik-Quiz</h1>
+        <p class="subtitle">Vererbung &amp; Mendelsche Regeln · Klasse 9</p>
+      </div>
+    </header>
+
+    <!-- Startbildschirm -->
+    <section id="start-screen" class="card screen active">
+      <h2>Willkommen!</h2>
+      <p>Du bekommst <strong>50 Aussagen</strong> zur Genetik. Entscheide bei jeder Aussage:
+        Stimmt das? <strong>Ja</strong> oder <strong>Nein</strong>?</p>
+      <ul class="info-list">
+        <li>✅ Nach jeder Antwort siehst du sofort, ob sie richtig war.</li>
+        <li>💡 Eine kurze Erklärung hilft dir beim Lernen.</li>
+        <li>🏆 Am Ende siehst du deine Punktzahl.</li>
+      </ul>
+      <label for="name-input" class="label">Dein Vorname</label>
+      <input id="name-input" type="text" maxlength="30" placeholder="z. B. Lena" autocomplete="off">
+      <p id="name-hint" class="hint hidden">Bitte gib deinen Vornamen ein.</p>
+      <button id="start-btn" class="btn btn-primary btn-large">Quiz starten</button>
+      <button id="show-results-btn" class="btn btn-link">Klassenergebnisse anzeigen</button>
+    </section>
+
+    <!-- Quizbildschirm -->
+    <section id="quiz-screen" class="card screen">
+      <div class="progress-info">
+        <span id="progress-text">Frage 1 von 50</span>
+        <span id="score-live">Punkte: 0</span>
+      </div>
+      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="50" aria-valuenow="0">
+        <div id="progress-fill" class="progress-fill"></div>
+      </div>
+
+      <p class="question-label">Stimmt diese Aussage?</p>
+      <h2 id="question-text" class="question-text"></h2>
+
+      <div class="answer-buttons">
+        <button id="yes-btn" class="btn btn-answer btn-yes">👍 Ja</button>
+        <button id="no-btn" class="btn btn-answer btn-no">👎 Nein</button>
+      </div>
+
+      <div id="feedback" class="feedback hidden" aria-live="polite">
+        <p id="feedback-title" class="feedback-title"></p>
+        <p id="feedback-text" class="feedback-text"></p>
+      </div>
+
+      <button id="next-btn" class="btn btn-primary hidden">Nächste Frage →</button>
+      <p class="hint keys">Tipp: Taste <kbd>J</kbd> = Ja, <kbd>N</kbd> = Nein, <kbd>Enter</kbd> = weiter</p>
+    </section>
+
+    <!-- Ergebnisbildschirm -->
+    <section id="result-screen" class="card screen">
+      <div id="result-emoji" class="result-emoji">🏆</div>
+      <h2 id="result-title">Geschafft!</h2>
+      <p id="result-score" class="result-score"></p>
+      <div class="result-circle">
+        <span id="result-percent">0 %</span>
+      </div>
+      <p id="result-message" class="result-message"></p>
+
+      <h3 class="wrong-heading" id="wrong-heading">Diese Fragen solltest du wiederholen:</h3>
+      <ul id="wrong-list" class="wrong-list"></ul>
+
+      <div class="result-buttons">
+        <button id="restart-btn" class="btn btn-primary">Nächste Person</button>
+        <button id="results-from-end-btn" class="btn btn-secondary">Klassenergebnisse</button>
+      </div>
+    </section>
+
+    <!-- Klassenergebnisse -->
+    <section id="class-screen" class="card screen">
+      <h2>Klassenergebnisse</h2>
+      <p class="hint">Gespeichert werden die letzten 20 Ergebnisse auf diesem Gerät.</p>
+      <table class="results-table">
+        <thead>
+          <tr><th>#</th><th>Name</th><th>Punkte</th><th>Datum</th></tr>
+        </thead>
+        <tbody id="results-body"></tbody>
+      </table>
+      <p id="no-results" class="hint hidden">Noch keine Ergebnisse vorhanden.</p>
+      <div class="result-buttons">
+        <button id="back-btn" class="btn btn-primary">Zurück zum Start</button>
+        <button id="clear-btn" class="btn btn-danger">Liste löschen</button>
+      </div>
+    </section>
+
+    <footer class="footer">Biologie · Realschule NRW · Genetik</footer>
+  </main>
+
+  <script src="fragen.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
